@@ -20,13 +20,16 @@ var removeFromView = function(edgeRef, edgeSnap) {
 }
 
 var add = function() {
+  var name = document.getElementById('edge_name').value;
+  name = (name === "") ? Appbase.uuid() : name;
   var priority = document.getElementById('priority').value;
   document.getElementById('priority').value = '';
+  document.getElementById('edge_name').value = '';
   var callback = function(error) {if(error) return console.error(error);};
   if(priority === '') {
-    vRef.setEdge(Appbase.uuid(), callback);
+    vRef.setEdge(name, callback);
   } else {
-    vRef.setEdge(Appbase.uuid(), parseInt(priority), callback);
+    vRef.setEdge(name, parseInt(priority), callback);
   }
 }
 
