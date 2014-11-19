@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>
+    Filter Example
+  </title>
+</head>
+  <body>
+      <div>
+        <input id="startAt" type="number" placeholder="startAt"></input>
+        <input id="endAt" type="number" placeholder="endAt"></input>
+        <input id="limit" type="number" placeholder="limit"></input>
+        <input id="skip" type="number" placeholder="skip"></input>
+        onlyNew: <input id="onlyNew" type="checkbox"></input>
+        <button onclick="setFilters()">Set Filters</button>
+        <button onclick="reset()">Reset</button>
+      </div>
+      <hr>
+      <div>
+        <input id="priority" type="number" placeholder="priority"></input>
+        <button onclick="add()">Add Edge</button>
+      </div>
+      <hr>
+      <div>
+        <h3>Edges</h3>
+        Filters: <span id="filters"></span>
+        <ul id="list">
+
+        </ul>
+      </div>
+    <script src="appbase.2.2.6.js"></script>
+    <script src="http://twitter.appbase.io/js/twitter.relative.time.min.js"></script>
+    <script src="code.js"></script>
+  </body>
+</html>
