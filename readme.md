@@ -14,3 +14,10 @@ Limit set to | Existing No. of Edges | Fired existing Edges | Fired new edges | 
 0 | 0 | 0 | Yes | No  | No | -
 0 | 5 | 5 | Yes | No  | No | -
 
+### reverse (endAt> startAt)
+
+- always returns empty edge object
+
+### suggestions
+
+- It feels like we should set a `limit` around __1000__ by default. That way `skip` would work, and the downloaded daat would be limited. Devs can set larger limits if they want.
