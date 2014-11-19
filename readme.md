@@ -1,4 +1,4 @@
-Live: (http://sagarchandarana123.github.io/filters-test)[http://sagarchandarana123.github.io/filters-test]
+Live: http://sagarchandarana123.github.io/filters-test
 
 # Observations
 
