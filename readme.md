@@ -6,7 +6,7 @@
 
 ### limit
 
-Limit set to | Existing No. of Edges | Fired existing Edges | Fired new edges | Properly Sorted | Unexpected Behaviour? | Comment
+Limit set to | Existing No. of Edges | Fired existing Edges | Fired new edges | Properly Sorted | Correct Behaviour? | Comment
 --- | --- | --- | --- | --- | --- | ---
 3 | 0 | 0 | Yes | No  | No | -
 3 | 5 | 3 | No  | Yes | Yes| -
