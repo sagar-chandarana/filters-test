@@ -67,9 +67,9 @@ tweetsRef.filter({startAt: <priority of the first edge that was fired previously
    limit and skip are counted. Otherwise, there might be new edges (which become existing
    edges when applying new filters) and limit, skip would fire unexpected edges. 
 
-2) Whenever new filters are applied, `edge_removed` is fired on current edges (matching the old filters) and 
-   `edge_added` edges matching the new filters. That means, in the view, the current data is 
-   automatically removed and new data is automatically added.
+2) Whenever new filters are applied, `edge_removed` is fired on current edges (matching
+   the old filters) and `edge_added` edges matching the new filters. That means, 
+   in the view, the current data is automatically removed and new data is automatically added.
 */
 
 tweetsRef.next(10); 
@@ -95,7 +95,8 @@ Notice here that
   2) endAt < startAt, meaning reverse.
 
   A filter `reverse` was proposed by Sacheendra, but I think 
-  it may lead to confusing/unexpected user input, like endAt < startAt and reverse is also set true. 
+  it may lead to confusing/unexpected user input, 
+  like endAt < startAt and reverse is also set true. 
 */
 
 tweetsRef.on('edge_added', addEdgeToView);
@@ -103,7 +104,7 @@ tweetsRef.on('edge_removed', removeEdgeFromView);
 tweetsRef.on('edge_changed', updateEdgeInView);
 
 tweetsRef.next(10);
-//similar to `filter({startAt: <priority of the first edge fired>, endAt: -Infinity, limit: 10, skip: 10})`
+//similar to calling `filter({startAt: <priority of the first edge fired>, endAt: -Infinity, limit: 10, skip: 10})`
 
 tweetsRef.previous(10);
 ```
