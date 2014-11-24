@@ -72,7 +72,12 @@ tweetsRef.filter({startAt: <priority of the first edge that was fired previously
    automatically removed and new data is automatically added.
 */
 
-tweetsRef.next(10); // Which does exactly what the above call does. A shortcut for fetching next set of edges for currently applied filters. Makes pagination really easy.
+tweetsRef.next(10); 
+/* 
+   Which does exactly what the above call does. It's a shortcut for
+   fetching next set of edges for currently applied filters. 
+   Makes pagination really easy. 
+*/
 
 tweetsRef.previous(10); // another shortcut similar to `next()`
 
