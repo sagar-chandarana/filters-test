@@ -53,6 +53,12 @@ var setFilters = function() {
     addToView(e, s);
   })
   
+  vRef.on('edge_changed', filters,  function(error, e, s) {
+    if(error) return console.error(error);
+    removeFromView(e, s);
+    addToView(e, s);
+  })
+  
   vRef.on('edge_removed', filters, function(error, e, s) {
     if(error) return console.error(error);
     removeFromView(e, s);
