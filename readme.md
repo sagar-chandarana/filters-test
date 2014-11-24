@@ -40,10 +40,16 @@ tweetsRef.on(<event>, <callback>);
 
 #### Pagination
 
-filters: startAt, endAt, limit, skip
+filters: startAt, endAt, limit, skip.
+
 new methods: `next()`, `previous()`
 
 When these filters are used, newly added edges are NEVER fired.
+
+
+Explaining the API thorugh code.
+
+1) Firing edges from lowest priority to highest priority (-n to +n)
 
 ```js
 var tweetsRef = Appbase.ns('user').v('sagar/tweets');
@@ -56,9 +62,14 @@ tweetsRef.on('edge_changed', updateEdgeInView);
 // new filters applied to fetch next 10 edges.
 tweetsRef.filter({startAt: <priority of the first edge that was fired previously>, limit: 10, skip: 10});
 /* 
-1) Notice startAt filter here. We have set this to a priority of the first edge. This is necessary, because it gives a point of reference, from which limit and skip are counted. Otherwise, there might be new edges (which become existing egdes when applying new filters) and limit, skip would fire unexpected edges. 
+1) Notice startAt filter here. We have set this to a priority of the first edge. 
+   This is necessary, because it gives a point of reference, from which limit and skip are counted. 
+   Otherwise, there might be new edges (which become existing egdes when applying new filters) and 
+   limit, skip would fire unexpected edges. 
 
-2) Whenever new filters are applied, `edge_removed` is fired on current edges and `edge_added` for next 10 edges. That means, in the view, the current data is automatically removed and new data is automatically added.
+2) Whenever new filters are applied, `edge_removed` is fired on current edges (matching the old filters) and 
+   `edge_added` edges matching the new filters. That means, in the view, the current data is 
+   automatically removed and new data is automatically added.
 */
 
 tweetsRef.next(10); // Which does exactly what the above call does. A shortcut for fetching next set of edges for currently applied filters. Makes pagination really easy.
@@ -67,7 +78,7 @@ tweetsRef.previous(10); // another shortcut similar to `next()`
 
 ```
 
-Firing edges in reverse. I.e. edges with higher priorities are fired first.
+2) Firing edges in reverse (+n to -n). I.e. edges with higher priorities are fired first.
 
 ```js
 var tweetsRef = Appbase.ns('user').v('sagar/tweets');
@@ -75,9 +86,11 @@ var tweetsRef = Appbase.ns('user').v('sagar/tweets');
 tweetsRef.filter({limit: 10, startAt: +Infinity, endAt: -Infinity}); 
 /*
 Notice here that 
-1) start, endAt accept Infinity values. 
-2) endAt < startAt, meaning reverse.
-A filter `reverse` was proposed by Sacheendra, but I think it may lead to confusing/unexpected user input, like endAt < startAt and reverse is also set true. 
+  1) start, endAt accept Infinity values. 
+  2) endAt < startAt, meaning reverse.
+
+  A filter `reverse` was proposed by Sacheendra, but I think 
+  it may lead to confusing/unexpected user input, like endAt < startAt and reverse is also set true. 
 */
 
 tweetsRef.on('edge_added', addEdgeToView);
