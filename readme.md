@@ -63,9 +63,9 @@ tweetsRef.on('edge_changed', updateEdgeInView);
 tweetsRef.filter({startAt: <priority of the first edge that was fired previously>, limit: 10, skip: 10});
 /* 
 1) Notice startAt filter here. We have set this to a priority of the first edge. 
-   This is necessary, because it gives a point of reference, from which limit and skip are counted. 
-   Otherwise, there might be new edges (which become existing egdes when applying new filters) and 
-   limit, skip would fire unexpected edges. 
+   This is necessary, because it gives a point of reference, from which 
+   limit and skip are counted. Otherwise, there might be new edges (which become existing
+   edges when applying new filters) and limit, skip would fire unexpected edges. 
 
 2) Whenever new filters are applied, `edge_removed` is fired on current edges (matching the old filters) and 
    `edge_added` edges matching the new filters. That means, in the view, the current data is 
