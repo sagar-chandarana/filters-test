@@ -5,6 +5,7 @@ var addToView = function(edgeRef, edgeSnap) {
   var li = document.createElement("li");
   var span = document.createElement("span");
   var button = document.createElement("button");
+  console.log(edgeSnap);
   span.innerHTML = 'name: ' + edgeSnap.name() + ' | ' + 'priority: ' + edgeSnap.priority() + ' | ' + 'priorityToTime: ' + new Date(edgeSnap.priority()).toTwitterRelativeTime();
   button.innerHTML = 'X';
   button.onclick = function() {edgeRef.inVertex().removeEdge(edgeSnap.name());};
