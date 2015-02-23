@@ -25,7 +25,7 @@ var add = function() {
   var priority = document.getElementById('priority').value;
   document.getElementById('priority').value = '';
   document.getElementById('edge_name').value = '';
-  var callback = function(error) {if(error) return console.error(error);};
+  var callback = function(error) {if(error) return console.log(error);};
   if(priority === '') {
     vRef.setEdge(name, callback);
   } else {
@@ -49,18 +49,18 @@ var setFilters = function() {
   document.getElementById('filters').innerHTML = JSON.stringify(filters);
   console.log('Filters:', filters);
   vRef.on('edge_added', filters,  function(error, e, s) {
-    if(error) return console.error(error);
+    if(error) return console.log(error);
     addToView(e, s);
   })
   
   vRef.on('edge_changed', filters,  function(error, e, s) {
-    if(error) return console.error(error);
+    if(error) return console.log(error);
     removeFromView(e, s);
     addToView(e, s);
   })
   
   vRef.on('edge_removed', filters, function(error, e, s) {
-    if(error) return console.error(error);
+    if(error) return console.log(error);
     removeFromView(e, s);
   })
 }
